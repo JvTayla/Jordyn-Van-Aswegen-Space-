@@ -2,8 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-    public class UIManager : MonoBehaviour
+public class UIManager : MonoBehaviour
 {
 
     [Header("Canvas")]
@@ -18,10 +17,16 @@ using UnityEngine;
     public AudioManager audioManager;
 
     public ScoreScript scoreScript;
-
     public PuckScript puckScript;
     public PlayerMovement playerMovement;
     public AiScript aiScript;
+    public Portals orangePortal;
+    public Portals pinkPortal;
+
+    private void Start()
+    {
+        RestartGame(); // Initial game start
+    }
 
     public void ShowRestartCanvas(bool didAiWin)
     {
@@ -55,5 +60,8 @@ using UnityEngine;
         puckScript.CenterPuck();
         playerMovement.ResetPosition();
         aiScript.ResetPosition();
+        orangePortal.ResetPosition(true); // Reset orange portal position for game restart
+        pinkPortal.ResetPosition(true); // Reset pink portal position for game restart
     }
 }
+
